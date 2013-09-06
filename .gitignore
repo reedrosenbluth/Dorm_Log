@@ -1,0 +1,19 @@
+# Django
+
+*.log
+*.pot
+*.pyc
+
+# OS X
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Vim
+
+*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
