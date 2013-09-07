@@ -1,0 +1,38 @@
+#navigation .navbar {
+  background-color: #435061;
+  border-color: #5b6374;
+}
+#navigation .navbar .navbar-brand {
+  color: #FFFFFF;
+}
+#navigation .navbar .navbar-brand:hover {
+  color: #EEEEEE;
+}
+#content {
+  padding-top: 20px;
+}
+#content .row {
+  border-bottom: dashed 1px #D8D7D7;
+  margin-bottom: 30px;
+}
+#content .post .panel-body img {
+  max-width: 718px;
+}
+#content .likes {
+  padding-right: 32px;
+}
+#content .likes p {
+  margin: 0;
+}
+#content .likes .panel-heading {
+  color: #F44;
+}
+#content .likes .panel-body {
+  padding: 10px 15px;
+}
+#content .annotations {
+  margin-bottom: 30px;
+}
+#content .annotations .panel {
+  background-color: #FDFDED;
+}
