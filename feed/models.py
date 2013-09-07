@@ -65,6 +65,5 @@ class Annotation(models.Model):
     author = models.ForeignKey(User, related_name='annotations')
 
 class Favorite(models.Model):
-    initials = models.CharField(max_length = 3)
     entry = models.ForeignKey(Entry, related_name='favorites')
     author = models.ForeignKey(User, related_name='favorites')

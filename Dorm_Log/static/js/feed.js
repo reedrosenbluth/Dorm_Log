@@ -29,20 +29,24 @@ $(function() {
 	$(".submit-fav").on("click", function(e){
 		e.preventDefault();
 		var $parent = $(this).parent();
-		
 		var $entry = $parent.data('entry');
-		console.log("favorite");
-		
+		var $auth = $parent.data('initials');
+		console.log($auth)
 		var data = {
 	
 			"entry": $entry
 		};
 		$.ajax({
-			url: "ws/add_favorite",
+			url: "/ws/add_favorite",
 			type: "POST",
 			data: data,
 			success: function(data) {
-				console.log("success")
+				console.log(data)
+				console.log($parent.parent().parent().children('.panel-body'))
+				if (data == 'success')
+					$parent.parent().parent().children('.panel-body').append('<p class='+$auth+'>'+$auth+'</p>')
+				else
+					$parent.parent().parent().children('.panel-body').children().remove('.'+$auth)
 			}
 		});
 		

@@ -9,6 +9,7 @@ from feed.models import Group
 from feed.models import UserProfile
 from feed.models import Entry
 from feed.models import Annotation
+from feed.models import Favorite
 
 import django_filepicker
 from django import forms
@@ -22,6 +23,8 @@ class UploadFileForm(forms.Form):
     file  = django_filepicker.forms.FPFileField()
 
 def feed(request, group_id):
+    
+    #print >>sys.stderr, userProfile.name.get_profile()
     form  = UploadFileForm()
     group = Group.objects.get(pk=group_id)
     entries = Entry.objects.filter(group=group).order_by('-created_at')
@@ -32,7 +35,8 @@ def feed(request, group_id):
     data = {
             'group': group,
             'entries': zipped,
-            'form': form
+            'form': form,
+           
     }
     return render(request, 'feed/feed.html', data,)
 
@@ -50,7 +54,7 @@ def entry(request):
 
 @csrf_exempt
 def add_comment(request):
-    print >>sys.stderr, "adding comment"
+    print >>sys.stderr, 'adding comment'
     text = request.POST.get('text')
     entry = request.POST.get('entry')
     entry_object = Entry.objects.get(pk=entry)
@@ -62,12 +66,16 @@ def add_comment(request):
 @csrf_exempt
 def add_favorite(request):
     print >>sys.stderr, "adding favorite"
-    initals = "XXX"
     entry = request.POST.get('entry')
     entry_object = Entry.objects.get(pk=entry)
-    d = dict(intials=initals, entry=entry_object, author=request.user)
+    favorites = Favorite.objects.all().filter(entry=entry_object)
+    for fav in favorites:
+        if fav.author == request.user:
+            fav.delete()
+            return HttpResponse("failure")
+    d = dict(entry=entry_object, author=request.user)
     favorite = Favorite(**d)
     favorite.save()
-    return HttpResponse(request.user)
+    return HttpResponse("success")
 
 
