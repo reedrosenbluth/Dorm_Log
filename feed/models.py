@@ -34,12 +34,14 @@ class Entry(models.Model):
         if not self.id:
             if not self.created_at:
                 self.created_at = timezone.now()
+            if not self.scheduled_at:
+                self.scheduled_at = timezone.now()
         super(Entry, self).save()
 
     def as_leaf_class(self):
         content_type = self.content_type
         model = content_type.model_class()
-        if(model == Base):
+        if(model == Entry):
             return self
         return model.objects.get(id=self.id)
 

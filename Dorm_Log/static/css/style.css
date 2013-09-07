@@ -4,6 +4,7 @@
 }
 #navigation .navbar .navbar-brand {
   color: #FFFFFF;
+  font-size: 22px;
 }
 #navigation .navbar .navbar-brand:hover {
   color: #EEEEEE;
@@ -58,6 +59,18 @@
 }
 .photo-upload {
   border-bottom: 1px solid #ddd;
+  height: 50px;
+}
+.photo-upload label,
+.photo-upload input,
+.photo-upload button {
+  display: none;
+}
+.photo-upload div {
+  width: 100%;
+  height: 46px;
+  position: relative;
+  left: -2px;
 }
 .type-button {
   text-align: center;
