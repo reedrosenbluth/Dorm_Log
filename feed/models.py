@@ -5,6 +5,8 @@ from django.contrib.contenttypes.models import ContentType
 import datetime
 from django.utils import timezone
 
+import django_filepicker
+
 class Group(models.Model):
     name          = models.CharField(max_length=200)
     parent        = models.ForeignKey("Group", related_name='children', blank = True, null = True)
@@ -44,7 +46,7 @@ class Entry(models.Model):
         return self.text
 
 class PhotoEntry(Entry):
-    photo = models.ImageField(upload_to='authors/pictures/', blank = True)
+    photo = django_filepicker.models.FPFileField(upload_to='photos', blank=True)
 
 class TipEntry(Entry):
     pass

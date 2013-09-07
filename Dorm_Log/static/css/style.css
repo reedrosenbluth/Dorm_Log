@@ -12,6 +12,9 @@
   padding-top: 20px;
 }
 #content .row {
+  margin: 0;
+}
+#content .entry-row {
   border-bottom: dashed 1px #D8D7D7;
   margin-bottom: 30px;
 }
@@ -35,4 +38,35 @@
 }
 #content .annotations .panel {
   background-color: #FDFDED;
+}
+.textinput {
+  background-color: white;
+  line-height: 40px;
+  font-size: 16pt;
+}
+.textinput textarea {
+  width: 100%;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+  resize: none;
+  border-bottom: 1px solid #ddd;
+  background-color: rgba(0, 0, 0, 0);
+}
+.photo-upload {
+  border-bottom: 1px solid #ddd;
+}
+.type-button {
+  text-align: center;
+  font-size: 12pt;
+  font-weight: 600;
+  height: 60px;
+  line-height: 60px;
+  border-left: 1px solid #dddddd;
+}
+.type-button:first-child {
+  border-left: none;
+}
+.type-button.selected {
+  background-color: #eee;
 }

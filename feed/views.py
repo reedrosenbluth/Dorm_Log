@@ -10,13 +10,22 @@ from feed.models import UserProfile
 from feed.models import Entry
 from feed.models import Annotation
 
+import django_filepicker
+from django import forms
+
 # Create your views here.
+
+
+class UploadFileForm(forms.Form):
+    file  = django_filepicker.forms.FPFileField()
+
 def index(request):
-    entries = Entry.objects.all().order_by('-created_at')
-    annotations = [entry.annotations for entry in entries]
+
+    form  = UploadFileForm()
     zipped = zip(entries, annotations)
     data = {
-            'entries': zipped
+            'entries': zipped,
+            'form': form
     }
     return render(request, 'feed/feed.html', data,)
 
