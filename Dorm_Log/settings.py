@@ -1,4 +1,8 @@
 # Django settings for Dorm_Log project.
+import os
+
+PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
+PARENT_DIR = os.path.dirname(PROJECT_DIR)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -8,6 +12,8 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+def forwardslash(x): return '/'.join(x.split('\\'))
 
 DATABASES = {
     'default': {
@@ -103,7 +109,7 @@ ROOT_URLCONF = 'Dorm_Log.urls'
 WSGI_APPLICATION = 'Dorm_Log.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/Users/jeffbarg/Sites/DormLog/templates/',
+    PROJECT_DIR + '/templates/',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
