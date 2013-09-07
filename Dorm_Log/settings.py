@@ -17,11 +17,11 @@ def forwardslash(x): return '/'.join(x.split('\\'))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dorm_log',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'dorm_log.db2',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -127,6 +127,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'feed',
 )
+
+FILEPICKER_API_KEY = 'AVVXOHTfSSsmxxi7gjyzhz'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

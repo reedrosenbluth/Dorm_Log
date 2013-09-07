@@ -23,6 +23,9 @@
 	padding-top: 20px;
 
 	.row {
+		margin: 0;
+	}
+	.entry-row {
 		border-bottom: dashed 1px #D8D7D7;
 		margin-bottom: 30px;
 	}
@@ -58,5 +61,48 @@
 		.panel {
 			background-color: #FDFDED;
 		}
+	}
+}
+
+.textinput {
+	background-color: white;//#dddddd;
+	height: 50px;
+
+	line-height: 40px;
+	font-size: 16pt;
+	textarea {
+		height: 50px;
+		width: 100%;
+
+		padding: 5px 10px;
+		outline: none;
+		border: none;
+		overflow: hidden;
+		resize: none;
+
+		border-bottom: 1px solid #ddd;
+		background-color: rgba(0,0,0,0);
+	}
+}
+
+.photo-upload {
+	border-bottom: 1px solid #ddd;
+}
+.type-button {
+	text-align: center;
+	font-size: 12pt;
+	font-weight: 600;
+	
+	height: 60px;
+	line-height: 60px;
+
+	// border-top: 1px solid #dddddd;
+	border-left: 1px solid #dddddd;
+	&:first-child {
+		border-left: none;
+	}
+
+	&.selected {
+		background-color: #eee;
 	}
 }

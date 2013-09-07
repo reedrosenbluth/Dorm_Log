@@ -5,23 +5,27 @@ from django.contrib.contenttypes.models import ContentType
 import datetime
 from django.utils import timezone
 
-class Group(models.Model):
-    name = models.CharField(max_length=200)
-    parent = models.ForeignKey("Group", related_name='children', blank=True, null=True)
-    administrator = models.ForeignKey(User, related_name='managed_groups')
+import django_filepicker
 
+class Group(models.Model):
+    name          = models.CharField(max_length=200)
+    parent        = models.ForeignKey("Group", related_name='children', blank = True, null = True)
+    administrator = models.ForeignKey(User, related_name='managed_groups')
 
     def __unicode__(self):
         return "%s" % (self.name)
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name="profile")
+    user  = models.OneToOneField(User, related_name="profile")
+    group = models.ForeignKey(Group)
 
 class Entry(models.Model):
     content_type = models.ForeignKey(ContentType,editable=False,null=True)
-    text       = models.TextField('Entry Text');
-    user       = models.ForeignKey(User);
-    created_at = models.DateTimeField('Created At')
+    text         = models.TextField('Entry Text');
+    user         = models.ForeignKey(User);
+    group        = models.ForeignKey(Group, null=True, blank=True) #null=True, blank=True should be deleted eventually.
+    created_at   = models.DateTimeField('Created At')
+    scheduled_at = models.DateTimeField('Scheduled At')
 
     def save(self):
         if(not self.content_type):
@@ -43,7 +47,7 @@ class Entry(models.Model):
         return self.text
 
 class PhotoEntry(Entry):
-    photo = models.ImageField(upload_to='authors/pictures/', blank = True)
+    photo = django_filepicker.models.FPFileField(upload_to='photos', blank=True)
 
 class TipEntry(Entry):
     pass

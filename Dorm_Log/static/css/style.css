@@ -1,0 +1,75 @@
+#navigation .navbar {
+  background-color: #435061;
+  border-color: #5b6374;
+}
+#navigation .navbar .navbar-brand {
+  color: #FFFFFF;
+}
+#navigation .navbar .navbar-brand:hover {
+  color: #EEEEEE;
+}
+#content {
+  padding-top: 20px;
+}
+#content .row {
+  margin: 0;
+}
+#content .entry-row {
+  border-bottom: dashed 1px #D8D7D7;
+  margin-bottom: 30px;
+}
+#content .post .panel-body img {
+  max-width: 718px;
+}
+#content .likes {
+  padding-right: 32px;
+}
+#content .likes p {
+  margin: 0;
+}
+#content .likes .panel-heading {
+  color: #F44;
+}
+#content .likes .panel-body {
+  padding: 10px 15px;
+}
+#content .annotations {
+  margin-bottom: 30px;
+}
+#content .annotations .panel {
+  background-color: #FDFDED;
+}
+.textinput {
+  background-color: white;
+  height: 50px;
+  line-height: 40px;
+  font-size: 16pt;
+}
+.textinput textarea {
+  height: 50px;
+  width: 100%;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  resize: none;
+  border-bottom: 1px solid #ddd;
+  background-color: rgba(0, 0, 0, 0);
+}
+.photo-upload {
+  border-bottom: 1px solid #ddd;
+}
+.type-button {
+  text-align: center;
+  font-size: 12pt;
+  font-weight: 600;
+  height: 60px;
+  line-height: 60px;
+  border-left: 1px solid #dddddd;
+}
+.type-button:first-child {
+  border-left: none;
+}
+.type-button.selected {
+  background-color: #eee;
+}
