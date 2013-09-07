@@ -39,7 +39,7 @@ def entry(request):
     entry.text  = request.GET['text']
     entry.photo = request.GET['file']
     entry.user  = request.user
-    # entry.group = entry.user.profile.group
+    entry.group = entry.user.profile.group
 
     entry.save()
 

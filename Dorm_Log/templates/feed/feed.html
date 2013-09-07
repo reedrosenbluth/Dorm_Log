@@ -5,8 +5,35 @@
 	  <h1><small>{{ group.name }}</small></h1>
 	</div>
 
+	<div class="add-entry row">
+		<div class="col-md-1"></div>
+		<div class="col-md-8">
+			<button type="button" class="add-new-entry btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span> Add new post</button>
+		</div>
+	</div>
 	{% for entry, annots in entries %}
-	<div class="row">
+	<div class="post-form row">
+		<div class="col-md-1"></div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<form enctype='multipart/form-data' class="entry-form photo-form">
+					{% csrf_token %}
+					<div class="textinput">
+						<textarea name="text"></textarea>
+					</div>
+					<div class = "photo-upload">
+						{{form}}
+					</div>
+				</form>
+				<div class="row">
+                    <div class="type-button col-md-4 selected" id="tip-button"><span class="glyphicon glyphicon-upload"></span> Tip</div>
+					<div class="type-button col-md-4" id="event-button"><span class="glyphicon glyphicon-calendar"></span> Event</div>
+					<div class="type-button col-md-4" id="photo-button"><span class="glyphicon glyphicon-camera"></span> Photo</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row entry-row">
 		<div class="likes col-md-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -66,25 +93,4 @@
 		</div>
 	</div>
 	{% endfor %}
-	<div class="row entry-row">
-			<div class="col-md-1"></div>
-			<div class="col-md-8">
-				<div class="panel panel-default">
-					<form enctype='multipart/form-data' class="entry-form photo-form">
-						{% csrf_token %}
-						<div class="textinput">
-							<textarea name="text"></textarea>
-						</div>
-						<div class = "photo-upload">
-							{{form}}
-						</div>
-					</form>
-					<div class="row">
-                        <div class="type-button col-md-4 selected" id="tip-button"><span class="glyphicon glyphicon-upload"></span> Tip</div>
-						<div class="type-button col-md-4" id="event-button"><span class="glyphicon glyphicon-calendar"></span> Event</div>
-						<div class="type-button col-md-4" id="photo-button"><span class="glyphicon glyphicon-camera"></span> Photo</div>
-					</div>
-				</div>
-			</div>
-		</div>
 {% endblock %}
