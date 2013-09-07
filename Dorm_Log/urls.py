@@ -8,7 +8,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'Dorm_Log.views.home', name='home'),
     # url(r'^Dorm_Log/', include('Dorm_Log.foo.urls')),
 
-	url(r'^$', 'feed.views.index'),
+	#url(r'^$', 'feed.views.index'),
+	url(r'^feed/(?P<group_id>.+)', 'feed.views.feed'),
 	url(r'^entries/new/$', 'feed.views.entry'),
 	url(r'^ws/add_comment', 'feed.views.add_comment'),
     # Uncomment the admin/doc line below to enable admin documentation:

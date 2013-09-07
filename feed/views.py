@@ -21,12 +21,14 @@ from feed.models import PhotoEntry, TipEntry, EventEntry
 class UploadFileForm(forms.Form):
     file  = django_filepicker.forms.FPFileField()
 
-def index(request):
+def feed(request, group_id):
     form  = UploadFileForm()
-    entries = Entry.objects.all().order_by('-created_at')
+    group = Group.objects.get(pk=group_id)
+    entries = Entry.objects.filter(group=group).order_by('-created_at')
     annotations = [entry.annotations for entry in entries]
     zipped = zip(entries, annotations)
     data = {
+            'group': group,
             'entries': zipped,
             'form': form
     }

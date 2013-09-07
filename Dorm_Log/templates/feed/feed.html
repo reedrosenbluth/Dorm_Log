@@ -2,7 +2,7 @@
 {% load feed_filters %}
 {% block content %}
 	<div class="page-header">
-	  <h1>Hill <small>3rd Floor Blue Suite</small></h1>
+	  <h1><small>{{ group.name }}</small></h1>
 	</div>
 
 	{% for entry, annots in entries %}
@@ -59,7 +59,7 @@
 			{% endfor %}
 			<form class="annotation-form form-inline" role="form" data-entry="{{ entry.id }}">
 				<div class="form-group">
-				    <input type="text" class="form-control" placeholder="Thoughts...">
+				    <input type="text" class="form-control" placeholder="Speak Your Mind...">
 				</div>
 				<button type="submit" class="submit-annot btn btn-default">Post</button>
 			</form>
