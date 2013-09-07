@@ -5,4 +5,4 @@ from django.shortcuts import render
 # Create your views here.
 def index(request):
     c = {}
-    return render(request, 'feed/index.html', c,)
+    return render(request, 'feed/base.html', c,)

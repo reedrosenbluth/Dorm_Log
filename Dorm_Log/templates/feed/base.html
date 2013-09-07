@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width">
+  <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+  <link href="{% static "css/style.less" %}" rel="stylesheet/less" type="text/css">
+
+  <script src="{% static "js/less-1.4.1.min.js" %}"></script>
+
+</head>
+<body>
+  <div id="navigation">
+  	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  		<div class="container">
+	  		<div class="navbar-header">
+	  			<a class="navbar-brand" href="#">Dorm Log</a>
+	  		</div>
+  		</div>
+    </nav>
+  </div>
+
+  <div id="content">
+
+  	<div class="container">
+	  	<div class="page-header">
+		  <h1>Hill <small>3rd Floor Blue Suite</small></h1>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="post col-md-9">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Tip - Get breakfast before 10:30</h3>
+				  </div>
+				  <div class="panel-body">
+				    Bitters slow-carb minim distillery, ethical Schlitz lomo fashion axe. Banksy assumenda minim mollit, id Pinterest keffiyeh locavore chia Neutra sapiente. Fap pariatur sed labore. VHS wayfarers qui Etsy exercitation. Wolf single-origin coffee assumenda, seitan 3 wolf moon qui drinking vinegar. Ut seitan cillum, consectetur laboris nulla excepteur quinoa Pitchfork. Tousled Helvetica dreamcatcher, food truck chia PBR kogi est esse.
+				  </div>
+				</div>
+			</div>
+		</div>
+
+	  	{% block container_wrap %}<div class="container" id="content">{% block content %}
+
+	    {% endblock %}</div><!-- /container -->{% endblock %}
+    </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</body>
+</html>
