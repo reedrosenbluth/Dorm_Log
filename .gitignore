@@ -4,6 +4,7 @@
 *.pot
 *.pyc
 settings_local.py
+dorm_log.db
 
 # OS X
 
