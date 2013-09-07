@@ -1,8 +1,23 @@
 $(document).ready(function() {
 	$('textarea').autosize();
 
-  $('textarea').on('focus', function() {
+  $('textarea').on('focusin', function() {
       $('.submit-footer').slideToggle(200);
+  }).on('focusout', function() {
+      $('.submit-footer').slideToggle(200);
+  });
+
+  function count(){
+      var txtVal = $('textarea').val();
+      var words = txtVal.trim().replace(/\s+/gi, ' ').split(' ').length;
+      var chars = txtVal.length;
+      if(chars===0){words=0;}
+      $(".wordcount").html(chars);
+  }
+  count();
+
+  $('textarea').on('keyup propertychange paste', function(){ 
+    count();
   });
 
 	$('.type-button').click(function () {

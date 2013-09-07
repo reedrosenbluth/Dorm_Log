@@ -31,4 +31,8 @@ $(function() {
 			$this.text("Cancel");
 		}
 	});
+
+	$(".annotations").each(function() {
+		$(this).css('max-height', $(this).closest('.row').find('.post').height());
+	});
 });
