@@ -10,7 +10,7 @@ urlpatterns = patterns('',
 
 	#url(r'^$', 'feed.views.index'),
 	url(r'^feed/(?P<group_id>.+)', 'feed.views.feed'),
-	url(r'^entries/new/$', 'feed.views.entry'),
+	url(r'^entries/new/$', 'feed.views.add_entry'),
 	url(r'^ws/add_comment', 'feed.views.add_comment'),
     url(r'^ws/add_favorite', 'feed.views.add_favorite'),
     # Uncomment the admin/doc line below to enable admin documentation:
