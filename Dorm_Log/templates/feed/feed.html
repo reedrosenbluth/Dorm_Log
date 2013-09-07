@@ -1,0 +1,66 @@
+{% extends "base.html" %}{% load staticfiles %}
+{% load feed_filters %}
+{% block content %}
+	<div class="page-header">
+	  <h1>Hill <small>3rd Floor Blue Suite</small></h1>
+	</div>
+
+	{% for entry, annots in entries %}
+	<div class="row">
+		<div class="likes col-md-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title"><span class="glyphicon glyphicon-heart-empty"></span></h3>
+			  	</div>
+				<div class="panel-body">
+					<p>RR</p>
+					<p>NC</p>
+					<p>JB</p>
+				</div>
+			</div>
+		</div>
+		{% if entry.content_type|stringformat:"s" == 'tip entry'%}
+			<div class="post col-md-8">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title"><b>Tip</b></h3>
+				  </div>
+				  <div class="panel-body">
+				    {{ entry.text }}
+				  </div>
+				</div>
+			</div>
+		{% elif entry.content_type|stringformat:"s" == 'photo entry' %}
+			<div class="post col-md-8">
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				    <h3 class="panel-title"><b>Photo</b></h3>
+				  </div>
+				  <div class="panel-body">
+				  	<img src="https://sphotos-b.xx.fbcdn.net/hphotos-frc1/1002912_10201870944436322_1891722426_n.jpg" />
+				  </div>
+				  <ul class="list-group">
+				  	<li class="list-group-item">{{ entry.text }}</li>
+				  </ul>
+				</div>
+			</div>
+		{% endif %}
+		<div class="annotations col-md-3">
+			<p><b>Notes</b></p>
+			{% for annot in annots.all %}
+			<div class="panel panel-default">
+				<div class="panel-body">
+			    {{ annot.text }} <a href="#"><i>–{{ annot.author }}</i></a>
+			  </div>
+			</div>
+			{% endfor %}
+			<form class="annotation-form form-inline" role="form" data-entry="{{ entry.id }}">
+				<div class="form-group">
+				    <input type="text" class="form-control" placeholder="Thoughts...">
+				</div>
+				<button type="submit" class="submit-annot btn btn-default">Post</button>
+			</form>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock %}

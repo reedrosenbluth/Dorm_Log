@@ -1,0 +1,46 @@
+{% extends "base.html" %}{% load staticfiles %}
+{% block content %}
+	<div class="page-header">
+	  <h1>Hill <small>3rd Floor Blue Suite</small></h1>
+	</div>
+
+	{% for entry in entries %}
+	<div class="row">
+		<div class="likes col-md-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+			    	<h3 class="panel-title"><span class="glyphicon glyphicon-heart-empty"></span></h3>
+			  	</div>
+				<div class="panel-body">
+					<p>RR</p>
+					<p>NS</p>
+					<p>JB</p>
+				</div>
+			</div>
+		</div>
+		<div class="post col-md-8">
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title"><b>Tip</b> - Get breakfast before 10:30</h3>
+			  </div>
+			  <div class="panel-body">
+			    {{ entry.text }}
+			  </div>
+			</div>
+		</div>
+		<div class="annotations col-md-3">
+			<p><b>Annotations</b></p>
+			<div class="panel panel-default">
+				<div class="panel-body">
+			    Swag freegan American Apparel, letterpress chia paleo Intelligentsia wayfarers. <a href="#"><i>–Reed Rosenbluth</i></a>
+			  </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+			    Swag freegan American Apparel, letterpress chia paleo Intelligentsia wayfarers. <a href="#"><i>–Nate Chodosh</i></a>
+			  </div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock %}

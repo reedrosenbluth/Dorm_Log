@@ -1,9 +1,12 @@
 
-@orange: #7A6A53;
+@brown: #7a6a53;
+@blue: #435061;
+@blue_border: #5B6374;
 
 #navigation {
 	.navbar {
-		background-color: @orange;
+		background-color: @blue;
+		border-color: @blue_border;
 
 		.navbar-brand {
 			color: #FFFFFF;
@@ -16,11 +19,19 @@
 }
 
 #content {
-	padding-top: 40px;
+	padding-top: 20px;
 
 	.row {
 		border-bottom: dashed 1px #D8D7D7;
 		margin-bottom: 30px;
+	}
+
+	.post {
+		.panel-body {
+			img {
+				max-width: 718px;
+			}
+		}
 	}
 
 	.likes {
@@ -36,10 +47,13 @@
 
 		.panel-body {
 			padding: 10px 15px;
+
 		}
 	}
 
 	.annotations {
+		margin-bottom: 30px;
+
 		.panel {
 			background-color: #FDFDED;
 		}
