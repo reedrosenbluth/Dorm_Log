@@ -3,10 +3,15 @@ $(document).ready(function() {
 
 	$('.type-button').click(function () {
 		var $that = $(this);
-
 		$that.parent().children().removeClass('selected');
-
 		$that.addClass('selected');
+
+    var id = $that.attr('id');
+    var form_id = id.replace('button','form');
+
+    var $form = $('#' + form_id);
+    $('.entry-form').addClass('hidden');
+    $form.removeClass('hidden');
 	});
 
 	$('textarea').keydown(function(e) {

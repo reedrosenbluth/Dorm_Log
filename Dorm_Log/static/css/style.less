@@ -64,9 +64,18 @@
 	}
 }
 
+#type-buttons {
+	border-bottom: 1px solid #ddd;
+}
+
+.hidden {
+	display: none;
+}
+
 .textinput {
 	background-color: white;//#dddddd;
 	height: 50px;
+
 
 	line-height: 40px;
 	font-size: 16pt;
@@ -80,7 +89,6 @@
 		overflow: hidden;
 		resize: none;
 
-		border-bottom: 1px solid #ddd;
 		background-color: rgba(0,0,0,0);
 	}
 }
@@ -104,15 +112,15 @@
 	font-size: 12pt;
 	font-weight: 600;
 	
-	height: 60px;
-	line-height: 60px;
+	height: 40px;
+	line-height: 40px;
 
 	// border-top: 1px solid #dddddd;
-	border-left: 1px solid #dddddd;
+	border-left: 1px solid #ddd;
 	&:first-child {
 		border-left: none;
 	}
-
+	
 	&.selected {
 		background-color: #eee;
 	}

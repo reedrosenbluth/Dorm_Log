@@ -6,7 +6,7 @@
 	</div>
 
 	{% for entry, annots in entries %}
-	<div class="row">
+	<div class="row entry-row">
 		<div class="likes col-md-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -70,7 +70,19 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-8">
 				<div class="panel panel-default">
-					<form enctype='multipart/form-data' class="entry-form photo-form">
+					<div class="row" id="type-buttons">
+                        <div class="type-button col-md-4 selected" id="tip-button"><span class="glyphicon glyphicon-upload"></span> Tip</div>
+						<div class="type-button col-md-4" id="event-button"><span class="glyphicon glyphicon-calendar"></span> Event</div>
+						<div class="type-button col-md-4" id="photo-button"><span class="glyphicon glyphicon-camera"></span> Photo</div>
+					</div>
+
+					<form enctype='multipart/form-data' class="entry-form" id="tip-form">
+						{% csrf_token %}
+						<div class="textinput">
+							<textarea name="text"></textarea>
+						</div>
+					</form>
+					<form enctype='multipart/form-data' class="entry-form hidden" id="event-form">
 						{% csrf_token %}
 						<div class="textinput">
 							<textarea name="text"></textarea>
@@ -79,11 +91,16 @@
 							{{form}}
 						</div>
 					</form>
-					<div class="row">
-                        <div class="type-button col-md-4 selected" id="tip-button"><span class="glyphicon glyphicon-upload"></span> Tip</div>
-						<div class="type-button col-md-4" id="event-button"><span class="glyphicon glyphicon-calendar"></span> Event</div>
-						<div class="type-button col-md-4" id="photo-button"><span class="glyphicon glyphicon-camera"></span> Photo</div>
-					</div>
+					<form enctype='multipart/form-data' class="entry-form hidden" id="photo-form">
+						{% csrf_token %}
+						<div class="textinput">
+							<textarea name="text"></textarea>
+						</div>
+						<div class = "photo-upload">
+							{{form}}
+						</div>
+					</form>
+
 				</div>
 			</div>
 		</div>

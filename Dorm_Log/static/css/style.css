@@ -40,6 +40,12 @@
 #content .annotations .panel {
   background-color: #FDFDED;
 }
+#type-buttons {
+  border-bottom: 1px solid #ddd;
+}
+.hidden {
+  display: none;
+}
 .textinput {
   background-color: white;
   height: 50px;
@@ -54,7 +60,6 @@
   border: none;
   overflow: hidden;
   resize: none;
-  border-bottom: 1px solid #ddd;
   background-color: rgba(0, 0, 0, 0);
 }
 .photo-upload {
@@ -76,9 +81,9 @@
   text-align: center;
   font-size: 12pt;
   font-weight: 600;
-  height: 60px;
-  line-height: 60px;
-  border-left: 1px solid #dddddd;
+  height: 40px;
+  line-height: 40px;
+  border-left: 1px solid #ddd;
 }
 .type-button:first-child {
   border-left: none;
