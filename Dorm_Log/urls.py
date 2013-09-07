@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'Dorm_Log.views.home', name='home'),
     # url(r'^Dorm_Log/', include('Dorm_Log.foo.urls')),
 
+	url(r'^$', 'feed.views.index'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
      url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
