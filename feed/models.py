@@ -6,22 +6,23 @@ import datetime
 from django.utils import timezone
 
 class Group(models.Model):
-    name = models.CharField(max_length=200)
-    parent = models.ForeignKey("Group", related_name='children', blank=True, null=True)
+    name          = models.CharField(max_length=200)
+    parent        = models.ForeignKey("Group", related_name='children', blank = True, null = True)
     administrator = models.ForeignKey(User, related_name='managed_groups')
-
 
     def __unicode__(self):
         return "%s" % (self.name)
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name="profile")
+    user  = models.OneToOneField(User, related_name="profile")
+    group = models.ForeignKey(Group)
 
 class Entry(models.Model):
     content_type = models.ForeignKey(ContentType,editable=False,null=True)
-    text       = models.TextField('Entry Text');
-    user       = models.ForeignKey(User);
-    created_at = models.DateTimeField('Created At')
+    text         = models.TextField('Entry Text');
+    user         = models.ForeignKey(User);
+    created_at   = models.DateTimeField('Created At')
+    scheduled_at = models.DateTimeField('Scheduled At')
 
     def save(self):
         if(not self.content_type):
