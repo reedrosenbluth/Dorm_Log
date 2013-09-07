@@ -1,6 +1,10 @@
 {% extends "base.html" %}{% load staticfiles %}
 {% load feed_filters %}
 {% block content %}
+	<script>
+	var user_id = {% if user.id != None %}{{user.id}}{% else %}0{% endif %};
+	var group_id = {% if group.id != None %}{{group.id}}{% else %}0{% endif %};
+	</script>
 	<div class="page-header">
 	  <h1>{{ group.parent.name }} <small>{{ group.name }}</small></h1>
 	</div>
@@ -24,12 +28,14 @@
 
 				<form enctype='multipart/form-data' class="entry-form" id="tip-form">
 					{% csrf_token %}
+					<input type="hidden" name="group_id" value="{{group.id}}" />
 					<div class="textinput">
 						<textarea name="text" placeholder="Write something!"></textarea>
 					</div>
 				</form>
 				<form enctype='multipart/form-data' class="entry-form hidden" id="event-form">
 					{% csrf_token %}
+					<input type="hidden" name="group_id" value="{{group.id}}" />
 					<div class="textinput">
 						<textarea name="text"></textarea>
 					</div>
@@ -39,6 +45,7 @@
 				</form>
 				<form enctype='multipart/form-data' class="entry-form hidden" id="photo-form">
 					{% csrf_token %}
+					<input type="hidden" name="group_id" value="{{group.id}}" />
 					<div class="textinput">
 						<textarea name="text"></textarea>
 					</div>

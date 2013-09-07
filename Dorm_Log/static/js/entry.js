@@ -21,9 +21,9 @@ $(document).ready(function() {
   });
 
 	$('.type-button').click(function () {
-		var $that = $(this);
-		$that.parent().children().removeClass('selected');
-		$that.addClass('selected');
+    var $that = $(this);
+    $that.parent().children().removeClass('selected');
+    $that.addClass('selected');
 
     var id = $that.attr('id');
     var form_id = id.replace('button','form');
@@ -34,9 +34,17 @@ $(document).ready(function() {
 	});
 
   $(".submit-btn").on("click", function(){
-     var $form = $('#photo-form');
+    if (user_id == 0) {
+      alert('Log In First!');
+      return;
+    }
+
+    var selected_button_id = $('.type-button.selected').attr('id');
+
+     var $form = $('#' + selected_button_id.replace('button', 'form'));
 
      var data = $form.serialize();
+     data     += "&button_id=" + selected_button_id;
 
       $.ajax({
           url: "/entries/new/",
@@ -45,6 +53,6 @@ $(document).ready(function() {
       }).done(function() {
           $(this).addClass("done");
       });
-  })
+  });
 });
 

@@ -30,21 +30,29 @@ def feed(request, group_id):
     data = {
             'group': group,
             'entries': zipped,
-            'form': form
+            'form': form,
+            'user': request.user
     }
     return render(request, 'feed/feed.html', data,)
 
-def entry(request):
-    entry       = PhotoEntry()
+def add_entry(request):
+    entry       = None
+
+    if (request.GET['button_id'] == 'photo-button'):
+        entry       = PhotoEntry()
+        entry.photo = request.GET['file']
+
+    if (request.GET['button_id'] == 'tip-button'):
+        entry = TipEntry()
+
     entry.text  = request.GET['text']
-    entry.photo = request.GET['file']
     entry.user  = request.user
-    #entry.group = entry.user.profile.group
+
+    entry.group = Group.objects.get(pk=request.GET['group_id'])
 
     entry.save()
 
-    return HttpResponse('')
-
+    return HttpResponse(request.GET['text'])
 
 @csrf_exempt
 def add_comment(request):

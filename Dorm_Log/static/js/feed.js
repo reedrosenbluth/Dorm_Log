@@ -4,8 +4,11 @@ $(function() {
 		var $parent = $(this).parent()
 		var $annot = $parent.find('input').val();
 		var $entry = $parent.data('entry');
+			
 		if ($annot == "") {
 			alert("Please Enter a Note");
+		} else if (user_id == 0) {
+			alert("Please Log In!");
 		} else {
 			var data = {
 				"text": $annot,
