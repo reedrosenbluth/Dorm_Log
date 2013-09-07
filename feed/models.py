@@ -23,6 +23,7 @@ class Entry(models.Model):
     content_type = models.ForeignKey(ContentType,editable=False,null=True)
     text         = models.TextField('Entry Text');
     user         = models.ForeignKey(User);
+    group        = models.ForeignKey(Group, null=True, blank=True) #null=True, blank=True should be deleted eventually.
     created_at   = models.DateTimeField('Created At')
     scheduled_at = models.DateTimeField('Scheduled At')
 

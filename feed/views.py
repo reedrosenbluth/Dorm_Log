@@ -13,6 +13,8 @@ from feed.models import Annotation
 import django_filepicker
 from django import forms
 
+from feed.models import PhotoEntry, TipEntry, EventEntry
+
 # Create your views here.
 
 
@@ -20,7 +22,6 @@ class UploadFileForm(forms.Form):
     file  = django_filepicker.forms.FPFileField()
 
 def index(request):
-
     form  = UploadFileForm()
     zipped = zip(entries, annotations)
     data = {
@@ -28,6 +29,18 @@ def index(request):
             'form': form
     }
     return render(request, 'feed/feed.html', data,)
+
+def entry(request):
+    entry       = PhotoEntry()
+    entry.text  = request.GET['text']
+    entry.photo = request.GET['file']
+    entry.user  = request.user
+    entry.group = entry.user.profile.group
+
+    entry.save()
+
+    return HttpResponse(entry + entry.photo)
+
 
 @csrf_exempt
 def add_comment(request):

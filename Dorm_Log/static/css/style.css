@@ -41,14 +41,17 @@
 }
 .textinput {
   background-color: white;
+  height: 50px;
   line-height: 40px;
   font-size: 16pt;
 }
 .textinput textarea {
+  height: 50px;
   width: 100%;
   padding: 5px 10px;
   outline: none;
   border: none;
+  overflow: hidden;
   resize: none;
   border-bottom: 1px solid #ddd;
   background-color: rgba(0, 0, 0, 0);
