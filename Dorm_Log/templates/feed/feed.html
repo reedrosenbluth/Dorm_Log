@@ -5,20 +5,24 @@
 	  <h1><small>{{ group.name }}</small></h1>
 	</div>
 
-	{% for entry, annots in entries %}
+	{% for entry, annots, favs in entries %}
 	<div class="row">
+		
 		<div class="likes col-md-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			    	<h3 class="panel-title"><span class="glyphicon glyphicon-heart-empty"></span></h3>
+					
+				    	<button type ="submit" class="submit-fav"><span class = " glyphicon glyphicon-heart-empty"></span></button>
+				    
 			  	</div>
 				<div class="panel-body">
-					<p>RR</p>
-					<p>NC</p>
-					<p>JB</p>
+					{% for favorite in favs.all%}
+						<p>{{favorite.author.first_name|first}}{{favorite.author.last_name|first}}</p>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
+		
 		{% if entry.content_type|stringformat:"s" == 'tip entry'%}
 			<div class="post col-md-8">
 				<div class="panel panel-default">

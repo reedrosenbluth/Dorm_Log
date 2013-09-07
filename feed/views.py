@@ -26,7 +26,9 @@ def feed(request, group_id):
     group = Group.objects.get(pk=group_id)
     entries = Entry.objects.filter(group=group).order_by('-created_at')
     annotations = [entry.annotations for entry in entries]
-    zipped = zip(entries, annotations)
+    favorites = [entry.favorites for entry in entries]
+    zipped = zip(entries, annotations, favorites)
+
     data = {
             'group': group,
             'entries': zipped,
@@ -48,6 +50,7 @@ def entry(request):
 
 @csrf_exempt
 def add_comment(request):
+    print >>sys.stderr, "adding comment"
     text = request.POST.get('text')
     entry = request.POST.get('entry')
     entry_object = Entry.objects.get(pk=entry)
@@ -55,3 +58,16 @@ def add_comment(request):
     annotation = Annotation(**d)
     annotation.save()
     return HttpResponse(request.user)
+
+@csrf_exempt
+def add_favorite(request):
+    print >>sys.stderr, "adding favorite"
+    initals = "XXX"
+    entry = request.POST.get('entry')
+    entry_object = Entry.objects.get(pk=entry)
+    d = dict(intials=initals, entry=entry_object, author=request.user)
+    favorite = Favorite(**d)
+    favorite.save()
+    return HttpResponse(request.user)
+
+
