@@ -4,11 +4,7 @@ $(function() {
 		var $parent = $(this).parent();
 		var $annot = $parent.find('input').val();
 		var $entry = $parent.data('entry');
-<<<<<<< HEAD
-		console.log("favorite");
-=======
-			
->>>>>>> acfe3b36ab9baa7b38f330e0075cabd8e388a3a9
+
 		if ($annot == "") {
 			alert("Please Enter a Note");
 		} else if (user_id == 0) {
@@ -71,10 +67,7 @@ $(function() {
 		}
 	});
 
-<<<<<<< HEAD
-=======
 	$(".annotations").each(function() {
 		$(this).css('max-height', $(this).closest('.row').find('.post').height());
 	});
->>>>>>> acfe3b36ab9baa7b38f330e0075cabd8e388a3a9
 });
