@@ -68,17 +68,18 @@
 	</div>
 	<div class="row entry-row">
 
-		<div class="likes col-md-1">
+		<div class="likes col-md-1 likescol">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<form data-entry="{{ entry.id }}" data-initials="{{user.first_name|first}}{{user.last_name|first}}">
-				    	<button type ="submit" class="submit-fav"><span class = " glyphicon glyphicon-heart-empty"></span></button>
+				    	<button type ="submit" class="submit-fav btn btn-link likebtn"><span class = "glyphicon"></span></button>
 				    </form>
 				    
 			  	</div>
-				<div class="panel-body">
+				<div class="panel-body like-body">
+
 					{% for favorite in favs.all%}
-						<p class = "{{favorite.author.first_name|first}}{{favorite.author.last_name|first}}">{{favorite.author.first_name|first}}{{favorite.author.last_name|first}}</p>
+						<p class = "initials {{favorite.author.first_name|first}}{{favorite.author.last_name|first}}">{{favorite.author.first_name|first}}{{favorite.author.last_name|first}}</p>
 					{% endfor %}
 				</div>
 			</div>

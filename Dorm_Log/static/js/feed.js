@@ -4,11 +4,7 @@ $(function() {
 		var $parent = $(this).parent();
 		var $annot = $parent.find('input').val();
 		var $entry = $parent.data('entry');
-<<<<<<< HEAD
-		console.log("favorite");
-=======
-			
->>>>>>> acfe3b36ab9baa7b38f330e0075cabd8e388a3a9
+
 		if ($annot == "") {
 			alert("Please Enter a Note");
 		} else if (user_id == 0) {
@@ -31,13 +27,26 @@ $(function() {
 		
 	});
 
+	$(".like-body").ready(function(e) {
+		
+		var $likebody = $(this).find('.like-body');
+		var $likebutton = $(this).find('.submit-fav');
+		if ($likebody.children().size() > 0) {
+			$likebody.show()
 
+			if ($likebody.children($likebutton.parent().data('initials')) != null)
+				$likebutton.children('.glyphicon').addClass('glyphicon-heart');
+			else
+				$likebutton.children('.glyphicon').addClass('glyphicon-heart-empty');
+		} else
+			$likebutton.children('.glyphicon').addClass('glyphicon-heart-empty');
+	});
 	$(".submit-fav").on("click", function(e){
 		e.preventDefault();
 		var $parent = $(this).parent();
 		var $entry = $parent.data('entry');
 		var $auth = $parent.data('initials');
-		console.log($auth)
+		
 		var data = {
 	
 			"entry": $entry
@@ -47,12 +56,21 @@ $(function() {
 			type: "POST",
 			data: data,
 			success: function(data) {
-				console.log(data)
-				console.log($parent.parent().parent().children('.panel-body'))
-				if (data == 'success')
-					$parent.parent().parent().children('.panel-body').append('<p class='+$auth+'>'+$auth+'</p>')
-				else
-					$parent.parent().parent().children('.panel-body').children().remove('.'+$auth)
+				
+				if (data == 'success') {
+					$parent.parent().parent().children('.panel-body').append('<p class='+$auth+'>'+$auth+'</p>');
+					$parent.parent().parent().children('.panel-body').show();
+					$parent.find('.glyphicon').removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
+					
+
+
+				}
+				else  {
+					$parent.parent().parent().children('.panel-body').children().remove('.'+$auth);
+					$parent.find('.glyphicon').removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
+					if ($parent.parent().parent().children('.panel-body').children().size() == 0)
+						$parent.parent().parent().children('.panel-body').hide();	
+				}
 			}
 		});
 		
@@ -71,10 +89,9 @@ $(function() {
 		}
 	});
 
-<<<<<<< HEAD
-=======
+
 	$(".annotations").each(function() {
 		$(this).css('max-height', $(this).closest('.row').find('.post').height());
 	});
->>>>>>> acfe3b36ab9baa7b38f330e0075cabd8e388a3a9
+
 });
