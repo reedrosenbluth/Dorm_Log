@@ -29,8 +29,15 @@ $(function() {
 
 	$(".like-body").ready(function(e) {
 		
-		var $likebody = $(this).find('.like-body');
-		var $likebutton = $(this).find('.submit-fav');
+		var $likebodys = $(this).find('.like-body');
+
+		$likebodys.each(addGlyphs)
+
+	});
+	function addGlyphs(index, Element) {
+		$likebody = $(this);
+		var $likebutton = $likebody.parent().find('.submit-fav');
+		console.log($likebody.children());
 		if ($likebody.children().size() > 0) {
 			$likebody.show()
 
@@ -40,7 +47,7 @@ $(function() {
 				$likebutton.children('.glyphicon').addClass('glyphicon-heart-empty');
 		} else
 			$likebutton.children('.glyphicon').addClass('glyphicon-heart-empty');
-	});
+	}
 	$(".submit-fav").on("click", function(e){
 		e.preventDefault();
 		var $parent = $(this).parent();
