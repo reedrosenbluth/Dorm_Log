@@ -52,6 +52,7 @@ $(document).ready(function() {
           data: data
       }).done(function() {
           $(this).addClass("done");
+          location.reload();
       });
   });
 });
