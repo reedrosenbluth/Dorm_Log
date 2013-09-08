@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('textarea').on('focusin', function() {
       $('.submit-footer').slideToggle(200);
   }).on('focusout', function() {
-      $('.submit-footer').slideToggle(200);
+      // $('.submit-footer').slideToggle(200);
   });
 
   function count(){
@@ -52,6 +52,7 @@ $(document).ready(function() {
           data: data
       }).done(function() {
           $(this).addClass("done");
+          location.reload();
       });
   });
 });

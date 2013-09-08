@@ -23,9 +23,8 @@
 		<div class="col-md-8">
 			<div class="panel panel-default">
 				<div class="row" id="type-buttons">
-                    <div class="type-button col-md-4 selected" id="tip-button"><span class="glyphicon glyphicon-upload"></span> Tip</div>
-					<div class="type-button col-md-4" id="event-button"><span class="glyphicon glyphicon-calendar"></span> Event</div>
-					<div class="type-button col-md-4" id="photo-button"><span class="glyphicon glyphicon-camera"></span> Photo</div>
+                    <div class="type-button col-md-6 selected" id="tip-button"><span class="glyphicon glyphicon-upload"></span> Tip</div>
+					<div class="type-button col-md-6" id="photo-button"><span class="glyphicon glyphicon-camera"></span> Photo</div>
 				</div>
 
 				<form enctype='multipart/form-data' class="entry-form" id="tip-form">
@@ -33,16 +32,6 @@
 					<input type="hidden" name="group_id" value="{{group.id}}" />
 					<div class="textinput">
 						<textarea name="text" placeholder="Write something!"></textarea>
-					</div>
-				</form>
-				<form enctype='multipart/form-data' class="entry-form hidden" id="event-form">
-					{% csrf_token %}
-					<input type="hidden" name="group_id" value="{{group.id}}" />
-					<div class="textinput">
-						<textarea name="text"></textarea>
-					</div>
-					<div class = "photo-upload">
-						{{form}}
 					</div>
 				</form>
 				<form enctype='multipart/form-data' class="entry-form hidden" id="photo-form">
@@ -72,7 +61,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<form data-entry="{{ entry.id }}" data-initials="{{user.first_name|first}}{{user.last_name|first}}">
-				    	<button type ="submit" class="submit-fav btn btn-link likebtn"><span class = "glyphicon"></span></button>
+				    	<button type ="submit" class="submit-fav btn btn-link likebtn"><span class="glyphicon"></span></button>
 				    </form>
 				    
 			  	</div>
